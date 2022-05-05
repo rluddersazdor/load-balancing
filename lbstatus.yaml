@@ -6,5 +6,5 @@
     - name: Check current status
       shell: /usr/local/bin/lbstatus               
       register: command_output
-        - debug:
-          var: command_output.stout_lines
+    - debug:
+       var: command_output.stout_lines

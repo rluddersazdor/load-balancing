@@ -4,8 +4,8 @@
   hosts: all
   tasks:
     - name: Check current status
-      shell: '/usr/local/bin/lbstatus'               
+      shell: /usr/local/bin/lbstatus              
       register: command_output
     - debug:
-       var: command_output.stout_lines
+       var: command_output.stdout_lines
        changed_when: false

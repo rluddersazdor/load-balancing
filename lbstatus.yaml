@@ -5,6 +5,6 @@
   tasks:
     - name: Check current status
       shell: /usr/local/bin/lbstatus              
-      register: command_output
+      register: lbstatus
     - debug:
-       var: command_output.stdout_lines
+       var: lbstatus.stdout_lines

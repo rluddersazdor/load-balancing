@@ -8,4 +8,3 @@
       register: command_output
     - debug:
        var: command_output.stdout_lines
-       changed_when: false

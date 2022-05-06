@@ -1,7 +1,14 @@
 ---
 - name: Load Balancer Status
   gather_facts: false
-  hosts: all
+  hosts: dlaporalb1
+         dlaporalb2
+         tlaporalb1
+         tlaporalb2
+         qlaporalb1
+         qlaporalb2
+         plaporalb1
+         plaporalb2
   tasks:
     - name: Check current status
       shell: /usr/local/bin/lbstatus              

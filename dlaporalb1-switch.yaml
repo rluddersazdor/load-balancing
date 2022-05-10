@@ -1,1 +1,15 @@
-
+---
+- name: Load Balancer Status
+  gather_facts: false
+  hosts: dlaporalb1
+         
+  tasks:
+    - name: Switch Load Balancer
+      shell: /usr/local/bin/lbswitch
+      register: lbswitch
+      var: lbswitch.stdout_lines 
+    #- name: Check current status
+    #  shell: /usr/local/bin/lbstatus              
+    #  register: lbstatus
+    #- debug:
+    #   var: lbstatus.stdout_lines

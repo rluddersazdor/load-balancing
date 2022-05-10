@@ -10,4 +10,3 @@
       register: lbswitch
     - debug:  
         var: lbswitch.stdout_lines
-   

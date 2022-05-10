@@ -9,9 +9,5 @@
       shell: /usr/local/bin/lbswitch
       register: lbswitch
     - debug:  
-        var: lbswitch.stdout_lines 
-    #- name: Check current status
-    #  shell: /usr/local/bin/lbstatus              
-    #  register: lbstatus
-    #- debug:
-    #   var: lbstatus.stdout_lines
+        var: lbswitch.stdout_lines
+   

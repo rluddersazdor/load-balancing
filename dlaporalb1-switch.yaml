@@ -1,6 +1,7 @@
 ---
 - name: Load Balancer Status
   gather_facts: false
+  become: yes
   hosts: dlaporalb1
          
   tasks:

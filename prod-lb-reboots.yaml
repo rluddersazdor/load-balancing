@@ -1,1 +1,23 @@
+---
+# Playbook to reboot the Load Balancers in TAS PROD
 
+# Waring Pause in case of FUBAR   
+- name: WARNING this playbooy with reboot the TAS Prod Load Balances. Cancel immediately if ran in error!
+  gather_facts: false
+  hosts: pldsadmin1
+  tasks:
+  - name: Pause for 2 minutes
+    pause:
+      minutes: 2
+
+## Reboot
+- name: Reboot Prod Servers exculding TAS
+  gather_facts: true
+  become: true
+  become_user: root
+  hosts: plzeisawcgr1
+         plziisawcge1
+         plissyslogngint
+  tasks:
+  - name: Reboot Servers
+    reboot: 

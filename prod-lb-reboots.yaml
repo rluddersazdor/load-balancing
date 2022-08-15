@@ -20,3 +20,14 @@
   tasks:
   - name: Reboot Servers
     reboot: 
+
+- name: Load Balancer Status
+  gather_facts: false
+  hosts: plaporalb1
+         plaporalb2
+  tasks:
+    - name: Check current status
+      shell: /usr/local/bin/lbstatus              
+      register: lbstatus
+    - debug:
+       var: lbstatus.stdout_lines

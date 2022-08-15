@@ -20,7 +20,20 @@
   tasks:
   - name: Reboot Servers
     reboot: 
+    
+# Verfiy all servers on online    
+- name: Ping Check
+  gather_facts: false
+  hosts: plaporalb1
+         plaporalb2
+  tasks:
+  - name: Pause for 1 minutes
+    pause:
+      minutes: 1
+  - name: Ping to verify connectivity
+    ansible.builtin.ping:
 
+# Load Balancer Status
 - name: Load Balancer Status
   gather_facts: false
   hosts: plaporalb1
@@ -31,3 +44,5 @@
       register: lbstatus
     - debug:
        var: lbstatus.stdout_lines
+
+#EOF Complete

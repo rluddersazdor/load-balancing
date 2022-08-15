@@ -4,7 +4,7 @@
 # Waring Pause in case of FUBAR   
 - name: WARNING this playbooy with reboot the TAS Prod Load Balances. Cancel immediately if ran in error!
   gather_facts: false
-  hosts: pldsadmin1
+  hosts: plaporalb1
   tasks:
   - name: Pause for 2 minutes
     pause:
@@ -15,9 +15,8 @@
   gather_facts: true
   become: true
   become_user: root
-  hosts: plzeisawcgr1
-         plziisawcge1
-         plissyslogngint
+  hosts: plaporalb1
+         plaporalb2
   tasks:
   - name: Reboot Servers
     reboot: 

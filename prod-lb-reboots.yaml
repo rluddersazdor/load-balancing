@@ -11,15 +11,15 @@
       minutes: 2
 
 ## Reboot
-- name: Reboot Prod Servers exculding TAS
-  gather_facts: true
-  become: true
-  become_user: root
-  hosts: plaporalb1
-         plaporalb2
-  tasks:
-  - name: Reboot Servers
-    reboot: 
+#- name: Reboot Prod Servers exculding TAS
+#  gather_facts: true
+#  become: true
+#  become_user: root
+#  hosts: plaporalb1
+#         plaporalb2
+#  tasks:
+#  - name: Reboot Servers
+#    reboot: 
     
 # Verfiy all servers on online    
 - name: Ping Check

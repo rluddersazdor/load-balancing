@@ -11,7 +11,7 @@
       minutes: 1
 
 # Reboot
-- name: Reboot Prod Servers exculding TAS
+- name: Reboot TAS Prod Load Balances
   gather_facts: true
   become: true
   become_user: root

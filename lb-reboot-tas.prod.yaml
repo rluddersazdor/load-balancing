@@ -12,7 +12,7 @@
 
 # Reboot
 - name: Reboot TAS Prod Load Balances
-  gather_facts: true
+  gather_facts: false
   become: true
   become_user: root
   hosts: plaporalb1

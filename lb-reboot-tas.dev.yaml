@@ -1,0 +1,56 @@
+---
+# Playbook to reboot the Load Balancers in TAS PROD
+
+# Waring Pause in case of FUBAR   
+- name: WARNING this playbook will patch and reboot the TAS Dev and Systest Load Balances. Cancel immediately if ran in error!
+  gather_facts: false
+  hosts: dlaporalb1
+  tasks:
+  - name: Pause for 1 minutes
+    pause:
+      minutes: 1
+
+# Reboot
+- name: Reboot TAS Prod Load Balances
+  gather_facts: false
+  become: true
+  become_user: root
+  hosts: dlaporalb1
+         dlaporalb2
+         tlaporalb1
+         tlaporalb2
+  tasks:
+  - name: Reboot Servers
+    reboot: 
+    
+# Verfiy all servers on online    
+- name: Ping Check
+  gather_facts: false
+  hosts: dlaporalb1
+         dlaporalb2
+         tlaporalb1
+         tlaporalb2
+  tasks:
+  - name: Pause for 1 minutes
+    pause:
+      minutes: 1
+  - name: Ping to verify connectivity
+    ansible.builtin.ping:
+
+# Load Balancer Status
+- name: Load Balancer Status
+  gather_facts: false
+  become: true
+  become_user: root
+  hosts: dlaporalb1
+         dlaporalb2
+         tlaporalb1
+         tlaporalb2
+  tasks:
+    - name: Check current status
+      shell: /usr/local/bin/lbstatus              
+      register: lbstatus
+    - debug:
+       var: lbstatus.stdout_lines
+
+#EOF Complete

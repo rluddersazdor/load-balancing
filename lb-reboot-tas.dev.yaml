@@ -10,6 +10,23 @@
     pause:
       minutes: 1
 
+      
+# Appy Updates
+- name: Dev Yum updates 
+  gather_facts: false
+  become: true
+  become_user: root  
+  hosts: dlaporalb1
+         dlaporalb2
+         tlaporalb1
+         tlaporalb2
+                 
+  tasks:
+    - name: Upgrade all packages
+      yum:
+        name: '*'
+        state: latest      
+
 # Reboot
 - name: Reboot TAS Prod Load Balances
   gather_facts: false
